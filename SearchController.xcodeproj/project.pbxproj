@@ -9,21 +9,25 @@
 /* Begin PBXBuildFile section */
 		D1416EA21E31C19F00962F77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1416EA11E31C19F00962F77 /* AppDelegate.swift */; };
 		D1416EA41E31C19F00962F77 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1416EA31E31C19F00962F77 /* ViewController.swift */; };
-		D1416EA71E31C19F00962F77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1416EA51E31C19F00962F77 /* Main.storyboard */; };
 		D1416EAA1E31C19F00962F77 /* SearchController.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D1416EA81E31C19F00962F77 /* SearchController.xcdatamodeld */; };
 		D1416EAC1E31C19F00962F77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1416EAB1E31C19F00962F77 /* Assets.xcassets */; };
 		D1416EAF1E31C19F00962F77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1416EAD1E31C19F00962F77 /* LaunchScreen.storyboard */; };
+		D1416EB81E31C28F00962F77 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1416EB71E31C28F00962F77 /* SearchVC.swift */; };
+		D1416EBA1E31C2AF00962F77 /* SearchStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1416EB91E31C2AF00962F77 /* SearchStoryBoard.storyboard */; };
+		D1416EBD1E31F6FC00962F77 /* CellOfSearchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1416EBC1E31F6FC00962F77 /* CellOfSearchList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D1416E9E1E31C19F00962F77 /* SearchController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SearchController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1416EA11E31C19F00962F77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1416EA31E31C19F00962F77 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D1416EA61E31C19F00962F77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D1416EA91E31C19F00962F77 /* SearchController.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SearchController.xcdatamodel; sourceTree = "<group>"; };
 		D1416EAB1E31C19F00962F77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D1416EAE1E31C19F00962F77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D1416EB01E31C19F00962F77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D1416EB71E31C28F00962F77 /* SearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
+		D1416EB91E31C2AF00962F77 /* SearchStoryBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchStoryBoard.storyboard; sourceTree = "<group>"; };
+		D1416EBC1E31F6FC00962F77 /* CellOfSearchList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellOfSearchList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +60,33 @@
 		D1416EA01E31C19F00962F77 /* SearchController */ = {
 			isa = PBXGroup;
 			children = (
+				D1416EB61E31C26300962F77 /* Search */,
 				D1416EA11E31C19F00962F77 /* AppDelegate.swift */,
 				D1416EA31E31C19F00962F77 /* ViewController.swift */,
-				D1416EA51E31C19F00962F77 /* Main.storyboard */,
 				D1416EAB1E31C19F00962F77 /* Assets.xcassets */,
 				D1416EAD1E31C19F00962F77 /* LaunchScreen.storyboard */,
 				D1416EB01E31C19F00962F77 /* Info.plist */,
 				D1416EA81E31C19F00962F77 /* SearchController.xcdatamodeld */,
 			);
 			path = SearchController;
+			sourceTree = "<group>";
+		};
+		D1416EB61E31C26300962F77 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				D1416EBB1E31F6D400962F77 /* Cell */,
+				D1416EB71E31C28F00962F77 /* SearchVC.swift */,
+				D1416EB91E31C2AF00962F77 /* SearchStoryBoard.storyboard */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		D1416EBB1E31F6D400962F77 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D1416EBC1E31F6FC00962F77 /* CellOfSearchList.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,8 +150,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1416EAF1E31C19F00962F77 /* LaunchScreen.storyboard in Resources */,
+				D1416EBA1E31C2AF00962F77 /* SearchStoryBoard.storyboard in Resources */,
 				D1416EAC1E31C19F00962F77 /* Assets.xcassets in Resources */,
-				D1416EA71E31C19F00962F77 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,23 +162,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1416EB81E31C28F00962F77 /* SearchVC.swift in Sources */,
 				D1416EAA1E31C19F00962F77 /* SearchController.xcdatamodeld in Sources */,
 				D1416EA41E31C19F00962F77 /* ViewController.swift in Sources */,
 				D1416EA21E31C19F00962F77 /* AppDelegate.swift in Sources */,
+				D1416EBD1E31F6FC00962F77 /* CellOfSearchList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		D1416EA51E31C19F00962F77 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D1416EA61E31C19F00962F77 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D1416EAD1E31C19F00962F77 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -267,6 +283,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = DEE97ABVRX;
 				INFOPLIST_FILE = SearchController/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kosign.SearchController;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -280,6 +297,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = DEE97ABVRX;
 				INFOPLIST_FILE = SearchController/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kosign.SearchController;
 				PRODUCT_NAME = "$(TARGET_NAME)";
