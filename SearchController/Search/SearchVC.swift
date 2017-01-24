@@ -10,6 +10,7 @@ import UIKit
 
 class SearchVC: UIViewController,UITableViewDelegate,UITableViewDataSource, UITextFieldDelegate {
    
+    
     var StartSearch : Bool?
     var arrFilter = [String]()
     @IBOutlet weak var txtField: UITextField!
@@ -31,6 +32,7 @@ class SearchVC: UIViewController,UITableViewDelegate,UITableViewDataSource, UITe
         SearchData = arrdata
         SearchData2 = arrdata2
         StartSearch = false
+        
         //heightMainSearch.constant = 44 + 20
         
 //        let searchController = UISearchController(searchResultsController: nil)
@@ -77,16 +79,34 @@ class SearchVC: UIViewController,UITableViewDelegate,UITableViewDataSource, UITe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryCell", for: indexPath) as! CellOfHistoryList
+            cell.btnSetToSearch.setImage(UIImage(named: "Down Left_000000_100"), for: .normal)
+            UIView.animate(withDuration: 0, animations:{
+                cell.btnSetToSearch.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI_2)) //M_PI
+            })
+            if cell.btnSetToSearch.isSelected == true{
+                txtField.text = SearchData[indexPath.row]
+            }
+            
             cell.listLabel.text = SearchData[indexPath.row]
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath) as! CellOfSearchList
+            cell.btnSetToSearch.setImage(UIImage(named: "Down Left_000000_100"), for: .normal)
+            UIView.animate(withDuration: 0, animations:{
+                cell.btnSetToSearch.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI_2)) //M_PI
+            })
+            if cell.btnSetToSearch.isSelected == true{
+                txtField.text = SearchData2[indexPath.row]
+            }
             cell.listLabel.text = SearchData2[indexPath.row]
             return cell
         }
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
-
+    
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         if string.isEmpty
@@ -107,14 +127,14 @@ class SearchVC: UIViewController,UITableViewDelegate,UITableViewDataSource, UITe
 //        let predicate=NSPredicate(format: "SELF.name CONTAINS[cd] %@", search)
 //        let arr=(arrdata as NSArray).filtered(using: predicate)
         let arr = arrdata.filter({ (city) -> Bool in
-            let cityText: NSString = city as NSString
+            let cText: NSString = city as NSString
             
-            return (cityText.range(of: search, options: NSString.CompareOptions.caseInsensitive).location) != NSNotFound
+            return (cText.range(of: search, options: NSString.CompareOptions.caseInsensitive).location) != NSNotFound
         })
         let arr2 = arrdata2.filter({ (city) -> Bool in
-            let cityText: NSString = city as NSString
+            let cText: NSString = city as NSString
             
-            return (cityText.range(of: search, options: NSString.CompareOptions.caseInsensitive).location) != NSNotFound
+            return (cText.range(of: search, options: NSString.CompareOptions.caseInsensitive).location) != NSNotFound
         })
         
         if arr.count > 0
@@ -127,7 +147,7 @@ class SearchVC: UIViewController,UITableViewDelegate,UITableViewDataSource, UITe
         else
         {
             SearchData = arrdata
-            SearchData2 = arrdata2
+            SearchData2 = []
         }
         tableView.reloadData()
         return true
