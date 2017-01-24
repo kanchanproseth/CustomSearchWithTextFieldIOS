@@ -10,12 +10,14 @@ import UIKit
 
 class SearchVC: UIViewController,UITableViewDelegate,UITableViewDataSource, UITextFieldDelegate {
    
-
+    var StartSearch : Bool?
     var arrFilter = [String]()
     @IBOutlet weak var txtField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     var arrdata = ["Joes Crab Shack", "Miami", "FL","Jims Crab Shack", "Los Angeles"]
+    var arrdata2 = ["Joes Crab Shack2", "Miami2", "FL2","Jims Crab Shack2", "Los Angeles2"]
     var SearchData = [String]()
+    var SearchData2 = [String]()
     var search:String = ""
     var searchController = UISearchController()
     override func viewDidAppear(_ animated: Bool) {
@@ -27,6 +29,8 @@ class SearchVC: UIViewController,UITableViewDelegate,UITableViewDataSource, UITe
         tableView.dataSource = self
         txtField.delegate = self
         SearchData = arrdata
+        SearchData2 = arrdata2
+        StartSearch = false
         //heightMainSearch.constant = 44 + 20
         
 //        let searchController = UISearchController(searchResultsController: nil)
@@ -53,27 +57,50 @@ class SearchVC: UIViewController,UITableViewDelegate,UITableViewDataSource, UITe
         // Dispose of any resources that can be recreated.
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return SearchData.count
+        if StartSearch == true{
+            if section == 0 {
+                return SearchData.count
+            }else {
+                return SearchData2.count
+            }
+        }else{
+            if section == 0 {
+                return SearchData.count
+            }else {
+                return 0
+            }
+        }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath) as! CellOfSearchList
-        cell.listLabel.text = SearchData[indexPath.row]
-        return cell
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryCell", for: indexPath) as! CellOfHistoryList
+            cell.listLabel.text = SearchData[indexPath.row]
+            return cell
+        }else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath) as! CellOfSearchList
+            cell.listLabel.text = SearchData2[indexPath.row]
+            return cell
+        }
+        
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        
         if string.isEmpty
         {
             search = String(search.characters.dropLast())
+            if search == ""{
+                StartSearch = false
+                tableView.reloadData()
+            }
         }
         else
         {
             search=txtField.text!+string
+            StartSearch = true
         }
         
         print(search)
@@ -84,15 +111,23 @@ class SearchVC: UIViewController,UITableViewDelegate,UITableViewDataSource, UITe
             
             return (cityText.range(of: search, options: NSString.CompareOptions.caseInsensitive).location) != NSNotFound
         })
+        let arr2 = arrdata2.filter({ (city) -> Bool in
+            let cityText: NSString = city as NSString
+            
+            return (cityText.range(of: search, options: NSString.CompareOptions.caseInsensitive).location) != NSNotFound
+        })
         
         if arr.count > 0
         {
             SearchData.removeAll(keepingCapacity: true)
-            SearchData = arr 
+            SearchData = arr
+            SearchData2.removeAll(keepingCapacity: true)
+            SearchData2 = arr2
         }
         else
         {
-            SearchData=arrdata
+            SearchData = arrdata
+            SearchData2 = arrdata2
         }
         tableView.reloadData()
         return true

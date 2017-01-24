@@ -2,14 +2,14 @@
 //  CellOfSearchList.swift
 //  SearchController
 //
-//  Created by PreahNeangToch on 1/24/17.
+//  Created by Kan Chanproseth on 1/20/17.
 //  Copyright © 2017 Kan Chanproseth. All rights reserved.
 //
 
 import UIKit
 
-class CellOfSearchList: UITableViewCell {
-    
+class CellOfHistoryList: UITableViewCell {
+
     @IBOutlet weak var listLabel: UILabel!
     @IBOutlet weak var btnSetToSearch: UIButton!
     override func awakeFromNib() {

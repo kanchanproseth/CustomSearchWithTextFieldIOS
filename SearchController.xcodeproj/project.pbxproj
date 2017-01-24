@@ -14,7 +14,8 @@
 		D1416EAF1E31C19F00962F77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1416EAD1E31C19F00962F77 /* LaunchScreen.storyboard */; };
 		D1416EB81E31C28F00962F77 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1416EB71E31C28F00962F77 /* SearchVC.swift */; };
 		D1416EBA1E31C2AF00962F77 /* SearchStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1416EB91E31C2AF00962F77 /* SearchStoryBoard.storyboard */; };
-		D1416EBD1E31F6FC00962F77 /* CellOfSearchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1416EBC1E31F6FC00962F77 /* CellOfSearchList.swift */; };
+		D1416EBD1E31F6FC00962F77 /* CellOfHistoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1416EBC1E31F6FC00962F77 /* CellOfHistoryList.swift */; };
+		FED148911E370F6600228584 /* CellOfSearchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED148901E370F6600228584 /* CellOfSearchList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +28,8 @@
 		D1416EB01E31C19F00962F77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1416EB71E31C28F00962F77 /* SearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		D1416EB91E31C2AF00962F77 /* SearchStoryBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchStoryBoard.storyboard; sourceTree = "<group>"; };
-		D1416EBC1E31F6FC00962F77 /* CellOfSearchList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellOfSearchList.swift; sourceTree = "<group>"; };
+		D1416EBC1E31F6FC00962F77 /* CellOfHistoryList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellOfHistoryList.swift; sourceTree = "<group>"; };
+		FED148901E370F6600228584 /* CellOfSearchList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellOfSearchList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +86,8 @@
 		D1416EBB1E31F6D400962F77 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				D1416EBC1E31F6FC00962F77 /* CellOfSearchList.swift */,
+				D1416EBC1E31F6FC00962F77 /* CellOfHistoryList.swift */,
+				FED148901E370F6600228584 /* CellOfSearchList.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -164,9 +167,10 @@
 			files = (
 				D1416EB81E31C28F00962F77 /* SearchVC.swift in Sources */,
 				D1416EAA1E31C19F00962F77 /* SearchController.xcdatamodeld in Sources */,
+				FED148911E370F6600228584 /* CellOfSearchList.swift in Sources */,
 				D1416EA41E31C19F00962F77 /* ViewController.swift in Sources */,
 				D1416EA21E31C19F00962F77 /* AppDelegate.swift in Sources */,
-				D1416EBD1E31F6FC00962F77 /* CellOfSearchList.swift in Sources */,
+				D1416EBD1E31F6FC00962F77 /* CellOfHistoryList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +328,7 @@
 				D1416EB51E31C19F00962F77 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
