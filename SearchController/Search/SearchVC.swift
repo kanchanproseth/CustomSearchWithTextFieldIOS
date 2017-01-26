@@ -39,9 +39,9 @@ class SearchVC: UIViewController,UITableViewDelegate,UITableViewDataSource, UITe
         txtField.becomeFirstResponder()
         
     }
-    func dismissKeyboard(){
-        view.endEditing(true)
-    }
+//    func dismissKeyboard(){
+//        view.endEditing(true)
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -186,8 +186,13 @@ class SearchVC: UIViewController,UITableViewDelegate,UITableViewDataSource, UITe
     }
     
     @IBAction func backToSearchFilter(_ sender: Any) {
-        ShowSearchResult = false
-        tableView.reloadData()
+        if ShowSearchResult == true{
+            ShowSearchResult = false
+            tableView.reloadData()
+        }else{
+            dismiss(animated: true, completion: nil)
+        }
+        
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
