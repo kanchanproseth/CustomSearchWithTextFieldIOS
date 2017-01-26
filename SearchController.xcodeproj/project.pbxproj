@@ -16,6 +16,7 @@
 		D1416EBA1E31C2AF00962F77 /* SearchStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1416EB91E31C2AF00962F77 /* SearchStoryBoard.storyboard */; };
 		D1416EBD1E31F6FC00962F77 /* CellOfHistoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1416EBC1E31F6FC00962F77 /* CellOfHistoryList.swift */; };
 		FED148911E370F6600228584 /* CellOfSearchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED148901E370F6600228584 /* CellOfSearchList.swift */; };
+		FED148951E39D3CE00228584 /* CellOfSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED148941E39D3CD00228584 /* CellOfSearchResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		D1416EB91E31C2AF00962F77 /* SearchStoryBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchStoryBoard.storyboard; sourceTree = "<group>"; };
 		D1416EBC1E31F6FC00962F77 /* CellOfHistoryList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellOfHistoryList.swift; sourceTree = "<group>"; };
 		FED148901E370F6600228584 /* CellOfSearchList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellOfSearchList.swift; sourceTree = "<group>"; };
+		FED148941E39D3CD00228584 /* CellOfSearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellOfSearchResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 			children = (
 				D1416EBC1E31F6FC00962F77 /* CellOfHistoryList.swift */,
 				FED148901E370F6600228584 /* CellOfSearchList.swift */,
+				FED148941E39D3CD00228584 /* CellOfSearchResult.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -167,6 +170,7 @@
 			files = (
 				D1416EB81E31C28F00962F77 /* SearchVC.swift in Sources */,
 				D1416EAA1E31C19F00962F77 /* SearchController.xcdatamodeld in Sources */,
+				FED148951E39D3CE00228584 /* CellOfSearchResult.swift in Sources */,
 				FED148911E370F6600228584 /* CellOfSearchList.swift in Sources */,
 				D1416EA41E31C19F00962F77 /* ViewController.swift in Sources */,
 				D1416EA21E31C19F00962F77 /* AppDelegate.swift in Sources */,

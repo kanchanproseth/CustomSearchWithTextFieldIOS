@@ -10,6 +10,8 @@ import UIKit
 
 class SearchVC: UIViewController,UITableViewDelegate,UITableViewDataSource, UITextFieldDelegate {
    
+    var ShowSearchResult:Bool?
+    
     
     var StartSearch : Bool?
     var arrFilter = [String]()
@@ -17,65 +19,73 @@ class SearchVC: UIViewController,UITableViewDelegate,UITableViewDataSource, UITe
     @IBOutlet weak var tableView: UITableView!
     var arrdata = ["Joes Crab Shack", "Miami", "FL","Jims Crab Shack", "Los Angeles"]
     var arrdata2 = ["Joes Crab Shack2", "Miami2", "FL2","Jims Crab Shack2", "Los Angeles2"]
+    var arrSearchData = ["Joes Crab Shack***2", "Miami***2", "FL***2","Jims Crab Shack***2", "Los Angeles***2"]
     var SearchData = [String]()
     var SearchData2 = [String]()
     var search:String = ""
     var searchController = UISearchController()
-    override func viewDidAppear(_ animated: Bool) {
-        txtField.becomeFirstResponder()
-    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ShowSearchResult = false
+        
         tableView.delegate = self
         tableView.dataSource = self
         txtField.delegate = self
         SearchData = arrdata
         SearchData2 = arrdata2
         StartSearch = false
+        txtField.becomeFirstResponder()
         
-        //heightMainSearch.constant = 44 + 20
-        
-//        let searchController = UISearchController(searchResultsController: nil)
-//        self.navigationItem.titleView = searchController.searchBar
-//        searchController.searchResultsUpdater = self
-//        searchController.dimsBackgroundDuringPresentation = false
-//        searchController.searchBar.tintColor = UIColor.blue
-//        self.searchController.delegate = self
-//        self.searchController.searchBar.delegate = self
-//        self.searchController.searchBar.becomeFirstResponder()
-//        searchController.searchBar.placeholder = "Search for Document"
-//        searchController.searchBar.sizeToFit()
-//        searchController.searchBar.setValue("X", forKey: "_cancelButtonText")
-//        searchController.isActive = true
-//        searchController.becomeFirstResponder()
-//            //(UIBarButtonItem.appearanceWhenContainedInInstancesOfClasses([UISearchBar.self])).tintColor = UIColor.grayColor()
-//        (UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self])).tintColor = UIColor.gray
-//          
-        // Do any additional setup after loading the view.
+    }
+    func dismissKeyboard(){
+        view.endEditing(true)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if StartSearch == true{
-            if section == 0 {
-                return SearchData.count
+        
+        if ShowSearchResult == true{
+            if section == 0 || section == 1 {
+                return 0
             }else {
-                return SearchData2.count
+                return arrSearchData.count
             }
         }else{
-            if section == 0 {
-                return SearchData.count
-            }else {
-                return 0
+            if StartSearch == true{
+                if section == 0 {
+                    return SearchData.count
+                }
+                if section == 1{
+                    return SearchData2.count
+                }
+                if section == 2{
+                    return 0
+                }
+            }else{
+                if section == 0 {
+                    return SearchData.count
+                }
+                if section == 1{
+                    return 0
+                }
+                if section == 2{
+                    return 0
+                }
             }
         }
+        return 0 //this line never execute
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryCell", for: indexPath) as! CellOfHistoryList
@@ -89,7 +99,8 @@ class SearchVC: UIViewController,UITableViewDelegate,UITableViewDataSource, UITe
             
             cell.listLabel.text = SearchData[indexPath.row]
             return cell
-        }else{
+        }
+        if indexPath.section == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath) as! CellOfSearchList
             cell.btnSetToSearch.setImage(UIImage(named: "Down Left_000000_100"), for: .normal)
             UIView.animate(withDuration: 0, animations:{
@@ -101,14 +112,34 @@ class SearchVC: UIViewController,UITableViewDelegate,UITableViewDataSource, UITe
             cell.listLabel.text = SearchData2[indexPath.row]
             return cell
         }
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 2{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResult", for: indexPath) as! CellOfSearchResult
+            
+            return cell
         
+        }
+        return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 2{
+            return 100
+        }
+        return 45
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 || indexPath.section == 1 {
+            ShowSearchResult = true
+            view.endEditing(true)
+            tableView.reloadData()
+        }else{
+            
+        }
     }
     
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
         if string.isEmpty
         {
             search = String(search.characters.dropLast())
@@ -119,6 +150,7 @@ class SearchVC: UIViewController,UITableViewDelegate,UITableViewDataSource, UITe
         }
         else
         {
+            ShowSearchResult = false
             search=txtField.text!+string
             StartSearch = true
         }
@@ -152,4 +184,14 @@ class SearchVC: UIViewController,UITableViewDelegate,UITableViewDataSource, UITe
         tableView.reloadData()
         return true
     }
+    
+    @IBAction func backToSearchFilter(_ sender: Any) {
+        ShowSearchResult = false
+        tableView.reloadData()
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        return true
+    }
+    
 }
